@@ -2,47 +2,79 @@ const std = @import("std");
 const ray = @cImport(@cInclude("raylib.h"));
 
 var map: [36][28]u8 = undefined;
-const resolution = 30.0;
+const resolution = 30;
 
 pub fn load_map(map_level: u8) void {
     switch (map_level) {
+        1 => {
+            map =[_][28]u8 {
+                [_]u8{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,1,0,1,0,1,0,1,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                [_]u8{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,},
+            };
+        },
         else => {
             map = [_][28]u8{[_]u8{0,0,0,1} ** 7, [_]u8{1,0,0,0} ** 7} ** 18;
         },
     }
 }
 
-const Ghost = struct {
-    pos: ray.Vector2,
-    velocity: f32,
 
-    const mode = enum {
-        HUNT,
-        CHILL,
-    };
+const Entity = struct {
+    grid_pos: @Vector(2, u32),  //x,y
+    screen_pos: @Vector(2, i32),  //x,y
+    size: i32,
+    velocity: i32,
+    busy: bool,
+    e_type: enum { GHOST, PACMAN, },
+    move_direction: enum { LEFT, RIGHT, DOWN, UP, NONE },
 
-    pub fn move_ghosts(ghosts: []Ghost) void {
-        _ = ghosts;
+    pub inline fn init() Entity {
+        return Entity{
+            .grid_pos       = [_]u32{14,15},
+            .screen_pos     = [_]i32{14*resolution,15*resolution},
+            .size           = resolution,
+            .velocity       = 3,
+            .busy           = false,
+            .e_type         = .GHOST,
+            .move_direction = .NONE,
+        };
     }
 
-    pub fn draw_ghosts(ghosts: []const Ghost) void {
-        //TODO draw a sprite for a ghosts
-        for(ghosts) |ghost|{
-            // const x = ghost.pos.x*resolution;
-            // const y = ghost.pos.y*resolution;
-
-            const size: ray.Vector2 = .{.x = resolution, .y = resolution};
-            ray.DrawRectangleV(ghost.pos, size,ray.WHITE);
-        }
-    }
-};
-
-const Player = struct {
-    pos: ray.Vector2,
-    size: ray.Vector2,
-    velocity: f32,
-
-    pub fn move_player(player: *Player) void {
+    pub fn handle_input(player: *Entity) void {
         //simple enum to be able to more easely remap if needed
         const Keys = enum(c_int){
             UP    = ray.KEY_UP,
@@ -50,79 +82,90 @@ const Player = struct {
             LEFT  = ray.KEY_LEFT,
             RIGHT = ray.KEY_RIGHT,
         };
+        if(player.move_direction != .NONE) return;
 
-        const distance = player.velocity * ray.GetFrameTime();
+        player.move_direction = .NONE;
+        const x = player.grid_pos[0];
+        const y = player.grid_pos[1];
 
         if(ray.IsKeyDown(@intFromEnum(Keys.UP))){
-            const y           = player.pos.y - distance;
-            const x           = player.pos.x;
-            const x_width     = player.pos.x + player.size.x;
-
-            const map_y       = @as(usize, @intFromFloat(y / resolution));
-            const map_x       = @as(usize, @intFromFloat(x / resolution));
-            const map_x_width = @as(usize, @intFromFloat(x_width / resolution));
-
-            if(map[map_y][map_x] == 0 and map[map_y][map_x_width] == 0){
-                player.pos.y = y;
-            } 
+            if(map[y-1][x] == 0) {
+                player.grid_pos = @Vector(2, u32){x,y-1};
+                player.move_direction = .UP;
+            }
         }
 
-        if(ray.IsKeyDown(@intFromEnum(Keys.DOWN))){
-            const y           = player.pos.y + player.size.y + distance;
-            const x           = player.pos.x;
-            const x_width     = player.pos.x + player.size.x;
-
-            const map_y       = @as(usize, @intFromFloat(y / resolution));
-            const map_x       = @as(usize, @intFromFloat(x / resolution));
-            const map_x_width = @as(usize, @intFromFloat(x_width / resolution));
-
-            if(map[map_y][map_x] == 0 and map[map_y][map_x_width] == 0){
-                player.pos.y += distance;
-            } 
+        else if(ray.IsKeyDown(@intFromEnum(Keys.DOWN))){
+            if(map[y+1][x] == 0) {
+                player.grid_pos = @Vector(2, u32){x,y+1};
+                player.move_direction = .DOWN;
+            }
         }
 
-        if(ray.IsKeyDown(@intFromEnum(Keys.LEFT))){
-            const x            = player.pos.x - distance;
-            const y            = player.pos.y;
-            const y_height     = player.pos.y + player.size.y;
-
-            const map_y        = @as(usize, @intFromFloat(y / resolution));
-            const map_x        = @as(usize, @intFromFloat(x / resolution));
-            const map_y_height = @as(usize, @intFromFloat(y_height / resolution));
-
-            if(map[map_y][map_x] == 0 and map[map_y_height][map_x] == 0){
-                player.pos.x = x;
-            } 
+        else if(ray.IsKeyDown(@intFromEnum(Keys.LEFT))){
+            if(map[y][x-1] == 0) {
+                player.grid_pos = @Vector(2, u32){x-1,y};
+                player.move_direction = .LEFT;
+            }
         }
 
-        if(ray.IsKeyDown(@intFromEnum(Keys.RIGHT))){
-            const x            = player.pos.x + player.size.x + distance;
-            const y            = player.pos.y;
-            const y_height     = player.pos.y + player.size.y;
+        else if(ray.IsKeyDown(@intFromEnum(Keys.RIGHT))){
+            if(map[y][x+1] == 0) {
+                player.grid_pos = @Vector(2, u32){x+1,y};
+                player.move_direction = .RIGHT;
+            }
+        }
+    }
+    pub inline fn draw(entities: []const Entity) void {
+        for(entities) |e| {
+            ray.DrawRectangle(e.screen_pos[0], e.screen_pos[1], e.size, e.size, ray.WHITE);
+        }
+    }
+    pub inline fn move(entities: []Entity) void {
+        const move_table = [_]@Vector(2, i32){
+            // LEFT, RIGHT, DOWN, UP
+            @Vector(2, i32){-1,0},
+            @Vector(2, i32){ 1,0},
+            @Vector(2, i32){0, 1},
+            @Vector(2, i32){0,-1},
+        };
+        for(entities) |*e| {
+            if (e.move_direction == .NONE) continue;
 
-            const map_y        = @as(usize, @intFromFloat(y / resolution));
-            const map_x        = @as(usize, @intFromFloat(x / resolution));
-            const map_y_height = @as(usize, @intFromFloat(y_height / resolution));
+            const direction = @intFromEnum(e.move_direction);
+            const velocity: @Vector(2, i32) = @splat(e.velocity);
 
-            if(map[map_y][map_x] == 0 and map[map_y_height][map_x] == 0){
-                player.pos.x += distance;
-            } 
+            const px_distance = move_table[direction] * velocity;
+            e.screen_pos += px_distance;
+
+            const res: @Vector(2, i32) = @splat(resolution);
+
+            const off_grid_aspect = @rem(e.screen_pos, res);
+            const end_move = off_grid_aspect == @as(@Vector(2, i32), @splat(0));
+
+            if(@reduce(.And, end_move)) {
+                e.move_direction = .NONE;
+            }
         }
     }
 
-    pub fn draw_player(player: Player) void {
-        //TODO draw a sprite for a player
-        // const x = player.pos.x*resolution;
-        // const y = player.pos.y*resolution;
-
-        ray.DrawRectangleV(player.pos, player.size,ray.YELLOW);
-    }
 };
+pub fn ghosts_ai(ghosts: []Entity) void {
+    const random = struct {
+        var rng: std.rand.Xoshiro256 = undefined;//std.rand.DefaultPrng.init(std.time.milliTimestamp());
+    };
+
+    random.rng = std.rand.DefaultPrng.init(@bitCast(std.time.milliTimestamp()));
+    for(ghosts) |*g| {
+        if(g.move_direction != .NONE) continue;
+        const direction = random.rng.random().int(u2);
+        g.move_direction = @enumFromInt(direction);
+    }
+}
 
 pub fn main() !void {
-    const int_reso: usize = @intFromFloat(resolution);
-    const screenWidth = map[0].len * int_reso;
-    const screenHeight = map.len * int_reso;
+    const screenWidth = map[0].len * resolution;
+    const screenHeight = map.len * resolution;
 
     ray.InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
     defer ray.CloseWindow();
@@ -130,40 +173,46 @@ pub fn main() !void {
     ray.SetTargetFPS(60);
 
     //setup
-    load_map(0);
-    var player =
-    Player{
-        .pos  = .{.x = 0.0, .y = 0.0},
-        .size = .{.x = 20.0, .y = 20.0},
-        .velocity = 300.0
+    load_map(1);
+    var entities = [_]Entity{
+        Entity.init(),  //player
+
+        Entity.init(),  //ghosts
+        Entity.init(),
     };
-    var ghosts = [_]Ghost{
-        .{.pos = .{.x = 10.0, .y = 10.0}, .velocity = 500.0},
-        .{.pos = .{.x = 20.0, .y = 20.0}, .velocity = 500.0},
-    };
+    const player = &entities[0];
+    const ghosts = entities[1..];
+
     while (!ray.WindowShouldClose()) {
         ray.BeginDrawing();
+        ray.ClearBackground(ray.BLACK);
         //draw map
         for(map, 0..) |line, map_y| {
             for(line, 0..) |tile, map_x| {
-                const x = @as(c_int, @intCast(map_x * int_reso));
-                const y = @as(c_int, @intCast(map_y * int_reso));
+                const x = @as(c_int, @intCast(map_x * resolution));
+                const y = @as(c_int, @intCast(map_y * resolution));
 
                 if(tile != 0)
                     ray.DrawRectangle(x, y, resolution, resolution, ray.RED);
             }
         }
+
         //handle player input
-        Player.move_player(&player);
+        player.handle_input();
+
+        //handle ghost AI
+        ghosts_ai(ghosts);
+        // _ = ghosts;
+        //TODOO
+
+        //handle map events
+        //TODOO
 
         //handle entities movent
-        Ghost.move_ghosts(&ghosts);
+        Entity.move(&entities);
 
         //drawing entities
-        Player.draw_player(player);
-        Ghost.draw_ghosts(&ghosts);
-
-        ray.ClearBackground(ray.BLACK);
+        Entity.draw(&entities);
 
         ray.EndDrawing();
     }
