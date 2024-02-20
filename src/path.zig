@@ -143,16 +143,18 @@ pub fn Path_Finder(comptime T: type) type {
     };
 }
 test "testing and printing to see if path is working" {
-    var map: [40][30]u8 = blk: {
+    var map: [40][30]u8 = comptime blk: {
         @setEvalBranchQuota(40*30*3);
         var value: [40][30]u8 = undefined;
         for(&value,0..) |*i, in|{
             for(i, 0..) |*j, jn|{
                 //creating non free blocks in the path
+                // _ = in;
+                // _ = jn;
                 j.* = 0;
-                // if(in%2 == 0 and jn%2 == 0) {
-                //     j.* = 'b';
-                // }
+                if(in%2 == 0 and jn%2 == 0) {
+                    j.* = 'b';
+                }
                 if(in%4 == 0 and jn != 0) {
                     j.* = '-';
                 }else if(in%6 == 0 and jn < i.len - 1) {
@@ -168,8 +170,8 @@ test "testing and printing to see if path is working" {
 
     var path = Path_Finder(@TypeOf(map)).init(&map);
 
-    const start = Point{3,3};
-    const end   = Point{22,37};
+    const start = Point{0,0};
+    const end   = Point{13,37};
 
     path.a_start(start, end);
 
